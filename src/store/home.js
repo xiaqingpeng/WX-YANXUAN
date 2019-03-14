@@ -23,8 +23,8 @@ export default {
 
           let newData = res.data.data.map(item => {
             return {
-              id: item.id,
-              picUrl: item.picUrl
+              id:item.id,
+              picUrl:item.picUrl
             };
 
           });
@@ -47,8 +47,8 @@ export default {
 
           let newData = res.data.data.map(item => {
             return {
-              id: item.id,
-              name: item.name
+              id:item.id,
+              name:item.name
             };
 
           });
@@ -62,6 +62,13 @@ export default {
           console.log(err);
         }
       });
+    },
+    getCategoryListAction: function(context, param) {
+      // wx.request({
+      //   url:""
+      // })
+      console.log(param)
     }
+    
   }
 }

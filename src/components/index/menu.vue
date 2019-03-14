@@ -2,7 +2,7 @@
   <scroll-view :scroll-x="true" class="menu-wrap">
     <ul class="menu-list" :style="{width:width+'px'}">
       <li
-        v-for="item in list"
+        v-for="item in menuList"
         :key="item.id"
         class="menu-item"
         :class="{active: index === selectIndex}"
@@ -39,7 +39,7 @@ export default {
   methods: {
     selectMenu(index) {
       this.selectIndex = index;
-      this.$emit("selected",index)
+      this.$emit("selected", index);
     }
   }
 };
