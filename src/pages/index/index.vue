@@ -1,6 +1,6 @@
 <template>
   <div>
-    <index-menu></index-menu>
+    <index-menu @selected="selectedAction"></index-menu>
   </div>
 </template>
 
@@ -10,9 +10,15 @@ import menu from "../../components/index/menu";
 export default {
   components: {
     "index-menu": menu
+  },
+  methods: {
+    
+     selectedAction(index){
+       console.log(index)
+     }
   }
 };
 </script>
 
-<style >
-</style>
+ 
+ 
