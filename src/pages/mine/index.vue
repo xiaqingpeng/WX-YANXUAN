@@ -7,9 +7,7 @@
 <script>
 import store from "../../store";
 export default {
-   created() {
-    console.log(store);
-  }
+ 
 };
 </script>
 
