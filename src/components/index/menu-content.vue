@@ -1,11 +1,16 @@
 <template>
   <div>
-    <h1>menu-content</h1>
-    <div>{{pageId}}</div>
+    <image :src="bannerUrl"></image>
+    <ul>
+      <li v-for="item  in cateList" :key="item.id">
+         {{item.name}}
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
+import  {mapState} from  "vuex"
 export default {
   props: {
     index: Number
@@ -13,16 +18,21 @@ export default {
   watch: {
     index: {
       handler(newVal) {
-        console.log("newVal:", newVal);
+        // console.log("newVal:", newVal);
         let pageId = this.$store.state.home.menuList[this.index].id;
         this.$store.dispatch("home/getCategoryListAction",{id:pageId})
       },
       immediate: true
     }
   },
-
+  computed: {
+    ...mapState({
+         bannerUrl:(state)=>state.home.cateBannerUrl,
+         cateList:(state)=>state.home.cateList
+    })
+  },
   created() {
-    console.log(this.index);
+    // console.log(this.index);
   }
 };
 </script>
