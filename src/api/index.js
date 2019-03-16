@@ -5,9 +5,12 @@
  const HOST_BANNER_LIST = HOST + "/api/home/bannerlist";
  //首页菜单列表
 const HOST_CATE_LIST = HOST + "/api/home/catelist/itemlist";
+const HOST_TAG_LIST = HOST + "/api/home/tagList";
 
 export  default {
     HOST_MENU_LIST,
     HOST_BANNER_LIST,
-    HOST_CATE_LIST
+    HOST_CATE_LIST,
+    HOST_TAG_LIST
+
 }

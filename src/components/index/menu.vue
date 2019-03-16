@@ -9,7 +9,7 @@
         @click="selectMenu(index)"
       >{{item.name }}</li>
     </ul>
-    <div></div>
+  
   </scroll-view>
 </template>
 <script>
@@ -45,6 +45,13 @@ export default {
 };
 </script>
 <style lang="less" scoped>
+.menu-wrap{
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: white;
+  z-index: 99999;
+}
 .menu-list {
   width: 800px;
   display: flex;

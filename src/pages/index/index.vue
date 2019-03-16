@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="home">
     <index-menu @selected="selectedAction"></index-menu>
     <top-content v-if="showIndex === 0"></top-content>
     <menu-content v-if="showIndex !== 0" :index="showIndex-1"></menu-content>
@@ -25,11 +25,19 @@ export default {
   methods: {
     selectedAction(index) {
       this.showIndex = index;
-      // console.log(index);
+  
     }
   }
 };
 </script>
+<style lang="less" >
+ .content{
+   padding-top:22px;
+
+ }
+
+</style>
+
 
  
  

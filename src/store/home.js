@@ -7,7 +7,8 @@ export default {
     menuList: [],
     bannerList: [],
     cateBannerUrl: "",
-    cateList: []
+    cateList: [],
+    tagList:[]
 
 
   },
@@ -21,6 +22,9 @@ export default {
     setCategoryList(state, param) {
       state.cateBannerUrl = param.bannerUrl;
       state.cateList = param.data
+    },
+    setTag(state,param){
+      state.tagList=param
     }
   },
   actions: {
@@ -72,7 +76,12 @@ export default {
       });
     },
     getCategoryListAction: function (context, param) {
-
+      //显示加载
+      wx.showLoading({
+        title: "正在加载中...",
+        mask:true
+     
+      });
       wx.request({
         url: api.HOST_CATE_LIST,
         data: {
@@ -110,9 +119,33 @@ export default {
 
           })
           console.log(newData)
+        },
+        complete: () => {
+          //影藏加载
+          wx.hideLoading();
         }
       })
 
+    },
+    getTagAction(context){
+      wx.request({
+        url:api.HOST_TAG_LIST,
+        success(result){
+          console.log(result.data.data)
+         let newData=result.data.data.map((item)=>{
+             return {
+               id:item.id,
+               name:item.name,
+               picUrl:item.picUrl,
+               floorPrice:item.floorPrice,
+               isNew:item.newOnShelf
+
+
+             }
+           })
+           context.commit("setTag",newData)
+        }
+      })
     }
 
   }
