@@ -44,12 +44,24 @@ export default {
             },
             immediate: true
         }
-    }
+    },
+    methods: {
+        //进入详情页
+        goDetail(item){
+          console.log(item)
+       
+          wx.navigateTo({
+              url:`/pages/goods-detail/main?id=${item.id}`,
+            
+          });
+        }
+    },
    
 }
 </script>
 
-<style scoped>
+<style scoped >
+
 .banner{
     width: 100%;
 }
