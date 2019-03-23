@@ -10,11 +10,14 @@ const HOST_TAG_LIST = HOST + "/api/home/tagList";
 //商品详情接口
 const HOST_DETAIL_LIST = HOST + "/api/item/detail";
 
+//分类页面接口
+const CATE_MENU_LIST = HOST + "/api/category/listmap";
 export  default {
     HOST_MENU_LIST,
     HOST_BANNER_LIST,
     HOST_CATE_LIST,
     HOST_TAG_LIST,
-    HOST_DETAIL_LIST
+    HOST_DETAIL_LIST,
+    CATE_MENU_LIST
 
 }

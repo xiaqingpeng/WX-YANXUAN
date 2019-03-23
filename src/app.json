@@ -5,13 +5,14 @@
     "pages/cart/main",
     "pages/mine/main",
     "pages/goods-detail/main"
-    
+  
+
 
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "严选",
+    "navigationBarTitleText": "严选商城",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {

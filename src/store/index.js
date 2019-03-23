@@ -5,6 +5,7 @@ import home from "./home"
 import goods from "./goods"
 import cart from "./cart"
 import user from "./user"
+import category from "./category"
 
 Vue.use(Vuex)
 const store = new Vuex.Store({
@@ -12,7 +13,8 @@ const store = new Vuex.Store({
       home,
       user,
       cart,
-      goods
+      goods,
+      category
     }
   }
 
