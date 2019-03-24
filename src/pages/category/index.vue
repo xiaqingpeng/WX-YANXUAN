@@ -1,11 +1,22 @@
 <template>
   <div id="category">
-    <scroll-view class="menu" :scroll-y="true">
+    <scroll-view class="menu scroll-view" :scroll-y = "true">
       <li v-for="(item ,index) in cateMenu" :key="item.id" :class="{active:index===selectIndex}"
       @click=selectMenu(index)>{{item.name}}</li>
     </scroll-view>
-    <scroll-view class="list" :scroll-y="true">
+    <scroll-view class="list scroll-view" :scroll-y = "true">
+     
       <image :src="cateBanner" class="banner" mode="widthFix" ></image>
+       <div class="list-wrap"  v-for="(data, i) in cateMenuList" :key=data.id>
+         <h3 v-if="data.name">{{data.name}}</h3>
+         <ul>
+           <li  v-for="(item, j) in data.categoryList" :key=item.id>
+             <image :src="item.wapBannerUrl" mode="widthFix"></image>
+             <p>{{item.name}}</p>
+           </li>
+         </ul>
+       </div>
+
     </scroll-view>
   </div>
 </template>
@@ -18,6 +29,14 @@ export default {
       selectIndex:0
     }
   },
+  watch: {
+  selectIndex(newValue){
+    console.log(newValue);
+    let id=this.cateMenu[newValue].id;
+    //重新请求右边栏数据
+    this.$store.dispatch("category/getCategoryListAction",{id})
+  }
+  },
   computed: {
     ...mapState({
       cateMenu: state => {
@@ -28,7 +47,10 @@ export default {
       },
       cateBanner: state => {
         return state.category.cateBanner;
-      }
+      },
+      cateMenuList: state => {
+        return state.category.cateMenuList;
+      },
     })
   },
   methods: {
@@ -47,10 +69,12 @@ export default {
 <style lang="less">
 #category {
   display: flex;
-  height: 100%;
+  .scroll-view {
+ height: 100%;
+  }
   .menu {
     width: 100px;
-    height: 100%;
+   
     li {
       padding: 10px 15px;
       line-height: 30px;
@@ -64,9 +88,30 @@ export default {
   .list {
     flex: 1;
      padding: 10px;
-    height: 100%;
+  
     .banner{
      width: 100%;
+    }
+    h3{
+      padding: 10px  15px;
+      font-weight: bold;
+      font-size: 18px;
+      border-bottom: 1px solid #999;
+    }
+    ul{
+      overflow: hidden;
+      li{
+        width: 33.3%;
+        float: left;
+        image {
+          width: 80%;
+          margin: 0 auto;
+        }
+        p{
+          color:#999;
+          font-size: 12px
+        }
+      }
     }
   }
 }
