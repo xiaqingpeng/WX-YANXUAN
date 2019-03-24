@@ -5,7 +5,7 @@
       @click=selectMenu(index)>{{item.name}}</li>
     </scroll-view>
     <scroll-view class="list" :scroll-y="true">
-
+      <image :src="cateBanner" class="banner" mode="widthFix" ></image>
     </scroll-view>
   </div>
 </template>
@@ -22,6 +22,12 @@ export default {
     ...mapState({
       cateMenu: state => {
         return state.category.cateMenu;
+      },
+      cateList: state => {
+        return state.category.cateList;
+      },
+      cateBanner: state => {
+        return state.category.cateBanner;
       }
     })
   },
@@ -32,7 +38,8 @@ export default {
    }
   },
   created() {
-    this.$store.dispatch("category/getCategoryAction");
+    this.$store.dispatch("category/getCategoryMenuAction");
+    this.$store.dispatch("category/getCategoryListAction");
   }
 };
 </script>
@@ -56,8 +63,11 @@ export default {
   }
   .list {
     flex: 1;
-   
+     padding: 10px;
     height: 100%;
+    .banner{
+     width: 100%;
+    }
   }
 }
 </style>
